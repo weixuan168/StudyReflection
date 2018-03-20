@@ -46,34 +46,26 @@ public class ReflectDemo {
     /**
      * Demo1: 通过Java反射机制得到类的包名和类名
      */
-    public static void Demo1 (){
+    public static void Demo1() {
         Person person = new Person();
-        System.out.println("Demo1:包名："+person.getClass().getPackage().getName()+"，"+
-                "完整类名："+person.getClass().getName());
-
+        System.out.println("Demo1:包名：" + person.getClass().getPackage().getName() + "，" +
+                "完整类名：" + person.getClass().getName());
     }
 
     /**
      * Demo2: 验证所有的类都是Class类的实例对象
-     *
-     * @throws ClassNotFoundException
      */
     public static void Demo2() throws ClassNotFoundException {
         //定义一个类型未知的Class，设初值为null
-        Class class1=null;
+        Class class1 = null;
 
-        class1=Class.forName("xuan.ReflectDemo$Person");
-        System.out.println("Demo2:包名："+class1.getPackage().getName()+"，"
-        +"完整类名:"+class1.getName());
-
+        class1 = Class.forName("xuan.ReflectDemo$Person");
+        System.out.println("Demo2:包名：" + class1.getPackage().getName() + "，"
+                + "完整类名:" + class1.getName());
     }
 
     /**
      * Demo3: 通过Java反射机制，用Class 创建类对象[这也就是反射存在的意义所在]
-     *
-     * @throws ClassNotFoundException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
      */
     public static void Demo3() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class class1 = null;
@@ -87,16 +79,10 @@ public class ReflectDemo {
 
     /**
      * Demo4: 通过Java反射机制得到一个类的构造函数，并实现创建带参实例对象
-     *
-     * @throws ClassNotFoundException
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     * @throws IllegalArgumentException
      */
     public static void Demo4() throws ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class class1=null;
-        Person person1=null;
+        Class class1 = null;
+        Person person1 = null;
         Person person2 = null;
 
         class1 = Class.forName("xuan.ReflectDemo$Person");
@@ -116,29 +102,21 @@ public class ReflectDemo {
 
     /**
      * Demo5: 通过Java反射机制操作成员变量, set 和 get
-     *
-     * @throws IllegalAccessException
-     * @throws IllegalArgumentException
-     * @throws NoSuchFieldException
-     * @throws SecurityException
-     * @throws InstantiationException
-     * @throws ClassNotFoundException
      */
-
     public static void Demo5() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException {
-        Class class1=null;
+        Class class1 = null;
         class1 = Class.forName("xuan.ReflectDemo$Person");
         Object obj = class1.newInstance();
 
 //        Field类代表类的成员变量，即属性
 //        getFields()方法只能获取public的属性
-        Field[] fields=class1.getFields();
-        for(int i=0;i<fields.length;i++) {
+        Field[] fields = class1.getFields();
+        for (int i = 0; i < fields.length; i++) {
             System.out.println(fields[i].getName());
         }
 //        getDeclaredFields()可以获取类的所有属性
         Field[] fields1 = class1.getDeclaredFields();
-        for(int i=0;i<fields1.length;i++) {
+        for (int i = 0; i < fields1.length; i++) {
             System.out.println(fields1[i].getName());
         }
 //        getDeclaredField(String s)获取特定的属性
@@ -151,8 +129,6 @@ public class ReflectDemo {
 
     /**
      * Demo6: 通过Java反射机制得到类的一些属性： 继承的接口，父类，函数信息，成员信息，类型等
-     *
-     * @throws ClassNotFoundException
      */
 
     public static void Demo6() throws ClassNotFoundException {
@@ -161,28 +137,21 @@ public class ReflectDemo {
 
         //取得父类名称
         Class superClass = class1.getSuperclass();
-        System.out.println("Demo6:SuperMan类的父类名："+superClass.getName());
+        System.out.println("Demo6:SuperMan类的父类名：" + superClass.getName());
 
-//        取得接口名称
+        //取得接口名称
         Class interFaces[] = class1.getInterfaces();
-        for(int i=0;i<interFaces.length;i++) {
-            System.out.println("Demo6:SuperMan类实现的接口名："+interFaces[i].getName());
+        for (int i = 0; i < interFaces.length; i++) {
+            System.out.println("Demo6:SuperMan类实现的接口名：" + interFaces[i].getName());
         }
 
-//        取得类方法
+        //取得类方法
         Method method[] = class1.getDeclaredMethods();
     }
 
     /**
      * Demo7: 通过Java反射机制调用类方法
      *
-     * @throws ClassNotFoundException
-     * @throws NoSuchMethodException
-     * @throws SecurityException
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
-     * @throws IllegalArgumentException
-     * @throws InstantiationException
      */
     public static void Demo7() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
         Class class1 = null;
@@ -221,8 +190,8 @@ public class ReflectDemo {
         }
 
         public Person(int age, String name) {
-            this.age=age;
-            this.name=name;
+            this.age = age;
+            this.name = name;
         }
 
         public int getAge() {
@@ -230,7 +199,7 @@ public class ReflectDemo {
         }
 
         public void setAge(int age) {
-            this.age=age;
+            this.age = age;
         }
 
         public String getName() {
@@ -263,7 +232,7 @@ public class ReflectDemo {
         }
     }
 
-    interface ActionInterface{
+    interface ActionInterface {
         void kill(int n);
     }
 
